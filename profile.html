@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  </head>
+    <style>
+      .dot {
+        height:     15px;
+        width: 15px;
+        background-color:#ee9f27;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        margin-left: 55vh;
+
+      }
+      .dot-term {
+        height:     15px;
+        width: 15px;
+        background-color:#ee9f27;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        right: 4vh;
+        margin-top:2vh;
+      
+      }
+      .dot-term:hover {
+        background-color: #bd6e08;
+
+      }
+
+
+      .dot:hover{
+          background-color: #bd6e08;
+      }
+              .background{
+        background-image: linear-gradient(45deg, #dd4814, #77216f, #5e2750, #2c001e, #aea79f, #333333);
+
+    }
+    .dragable{
+        width: 80%;
+        margin:5%;
+    }
+    .files-panel{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: warp;
+        width:fit-content;
+
+    }
+    .file{
+        display: inline-flex;
+        flex-direction: column;
+        width:fit-content;
+        align-items: center;
+        flex-wrap: nowarp;
+    }
+    .file:hover{
+        display: inline-flex;
+        flex-direction: column;
+        width:min-content;
+        height:19vh;
+        background-color: #ee9f27;
+        opacity:0.7;
+        flex-wrap:nowrap;
+        border: 1px solid red;
+
+
+    }
+    .icon{
+        width:10vh;
+        height:10vh;
+        margin:3vh;
+    }
+    .icon-label{
+        margin-left:2vh;
+        color:black;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .top-flex{
+        background-color: #44413D;
+        height:4vh;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+
+    }
+    .flex-container-folder {
+        display: flex;
+        flex-wrap: warp;
+        height:100vh;
+        background-color: #F2F0EF;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+
+
+      }
+      
+      .side-menu{
+        display: flex;
+        flex-direction: column;
+        background-color: #615D53;
+        width: 30%;
+        border-bottom-left-radius: 15px;
+
+      }
+      .menu-items{
+        display: flex;
+        flex-direction: row;
+    }
+    .menu-icon{
+        background-color:#514F48 ;
+
+    }
+
+      .flex-container {
+        display: flex;
+      }
+      
+      .flex-container > div {
+        margin: 10px;
+        padding: 20px;
+        font-size: 20px;
+      }
+      
+      .container {
+        /**border: solid 1px #000;**/
+        width: 100px;
+        height: 100px;
+        padding: 5px;
+        text-align: center;
+        margin-top:2%
+      }
+      .folder_tab, .folder {
+        margin: 0 auto;
+        background-color: #708090;
+      }
+      .folder_tab {
+        width: 25px;
+        height: 5px;
+        margin-right: 50%;
+        border-radius: 5px 15px 0 0;
+      }
+      .folder {
+        width: 50px;
+        height: 35px;
+        border-radius: 0 5px 5px 5px;
+        box-shadow: 1px 1px 0 1px #CCCCCC;
+      }
+      
+      
+        body {
+            min-width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #eee;
+            background-image: linear-gradient(45deg, #dd4814, #77216f, #5e2750, #2c001e, #aea79f, #333333);
+          }
+          
+          .console {
+            position: relative;
+            font-family: 'monospace';
+            width: 700px;
+            height: 450px;
+            box-sizing: border-box;
+            margin: auto;
+                    
+          }
+          
+          .console header {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: #555;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            color: #DDD;
+          }
+          
+          .console .consolebody {
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            box-sizing: border-box;
+            padding: 20px;
+            height: calc(100% - 40px);
+            overflow: scroll;
+            background-color: #000;
+            color: #63de00;
+            opacity:0.7;
+
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+
+          }
+          
+          .console .consolebody p {
+            line-height: 1.5rem;
+          }
+    </style>
+
+    <body>
+      <div>
+        <div class="flex-container">
+          <div>
+              <div class="container">
+                <div class="folder_tab"></div>
+                <div id="doc"class="folder"></div>
+                <span style="color:#DDD">Documents</span>
+              </div>
+        </div>
+        <div class="flex-container">
+          <div>
+              <div class="container">
+                <div class="folder_tab"></div>
+                <div id="term"class="folder"></div>
+                <span style="color:#DDD">Terminal</span>
+              </div>
+        </div>
+  
+      </div>
+      </div>
+      
+        <div  id = "draggable" class="console">
+            <header>
+              <p>pratyush@World </p>
+              
+            </header>
+            <div class="consolebody">
+              <p> Welcome to the world of Pratyush Harsh</p>
+              <p >> Click Here to download My Resume</p>
+              <p >> Enter reachme [your mail id] to hire me or have a chat</p>> help command will help you out
+            <div id = "user_inputs">
+                <p>> <input id ="0" type="text" style="
+                    background:transparent;
+                    border: none;
+                    outline: none;
+                color:#63de00;
+                font-size:16px;
+                font-family:'monospace';
+          " autocomplete=off></input></p>
+              </div>
+              
+            </div>
+
+          </div>
+          <div id="folderWin" class="dragable">
+
+            <div class="top-flex" style="">
+                <span style="margin-left: 80vh;font-weight:bold;color:azure; margin-top:10px">File Explorer</span>
+               <!--
+                    <span style="margin-left: 95vh; color:black;background-color:#ee9f27;
+                border-radius:2px;
+                width: 15px;
+                height: 10px; 
+            
+                ">x</span>
+               -->
+               <span id="folderClose"class="dot"></span>
+
+
+            </div>
+            <div class="flex-container-folder">
+                <div class ="side-menu" style="width:18vw;">
+                    <div class="menu-item">
+                        <span class="menu-icon">AA</span>
+                        <span>Text</span>
+                    </div>
+                    <div class="menu-i<tem">
+                        <span class="menu-icon">AA</span>
+                        <span>Text</span>
+                    </div>
+                    <div class="menu-i<tem">
+                        <span class="menu-icon">AA</span>
+                        <span>Text</span>
+                    </div>
+
+                </div>
+                <div class ="files-panel">
+                    <a href="https://bit.ly/3kO3B1C">
+                        <div class = "file">
+                            <img class="icon" src="Pdf_icon_file.png">
+                            <span class="icon-label">Resume</span>
+                        </div>
+    
+                    </a>
+
+                </div>
+              </div>  
+            </div>
+
+
+    </body>
+    <script>
+      $("#folderWin").hide();
+      $("#doc").click(function(){
+        $("#folderWin").show()
+      })
+      $("#folderClose").click(function(){
+        $("#folderWin").hide()
+      })
+
+        function template(ide){
+            console.log("Inside")
+            return `<p>> <input id =`+ide+` type="text" style="
+                background:transparent;
+                border: none;
+                width:
+                outline: none;
+            color:#63de00;
+            margin:;
+            font-size:16px;
+            font-family:'monospace';
+      "autocomplete=off></input></p>`
+        
+        }
+        var ele = 0
+        function passinps(event){
+            console.log(event.keyCode)
+          }
+          document.getElementById(ele.toString()).addEventListener("keyup",(event)=>{
+            //if(event.keyCode)
+          })    
+    </script>
+
+    
+</html>

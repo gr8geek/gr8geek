@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    </head>
+    <style>
+        .dot {
+            height:     15px;
+            width: 15px;
+            background-color:#ee9f27;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            margin-left: 55vh;
+
+          }
+          .dot:hover{
+              background-color: #bd6e08;
+          }
+                  .background{
+            background-image: linear-gradient(45deg, #dd4814, #77216f, #5e2750, #2c001e, #aea79f, #333333);
+
+        }
+        .dragable{
+            width: 80%;
+            margin:5%;
+        }
+        .files-panel{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: warp;
+            width:fit-content;
+
+        }
+        .file{
+            display: inline-flex;
+            flex-direction: column;
+            width:fit-content;
+            align-items: center;
+            flex-wrap: nowarp;
+        }
+        .file:hover{
+            display: inline-flex;
+            flex-direction: column;
+            width:min-content;
+            height:19vh;
+            background-color: #ee9f27;
+            opacity:0.7;
+            flex-wrap:nowrap;
+            border: 1px solid red;
+
+
+        }
+        .icon{
+            width:10vh;
+            height:10vh;
+            margin:3vh;
+        }
+        .icon-label{
+            margin-left:2vh;
+            color:black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .top-flex{
+            background-color: #44413D;
+            height:4vh;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+
+        }
+        .flex-container-folder {
+            display: flex;
+            flex-wrap: warp;
+            height:100vh;
+            background-color: #F2F0EF;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+
+
+          }
+          
+          .side-menu{
+            display: flex;
+            flex-direction: column;
+            background-color: #615D53;
+            width: 30%;
+            border-bottom-left-radius: 15px;
+
+          }
+          .menu-items{
+            display: flex;
+            flex-direction: row;
+        }
+        .menu-icon{
+            background-color:#514F48 ;
+
+        }
+
+    </style>
+    <body class = "background">
+            <div id="#dragable" class="dragable">
+
+            <div class="top-flex" style="">
+                <span style="margin-left: 80vh;font-weight:bold;color:azure; margin-top:10px">File Explorer</span>
+               <!--
+                    <span style="margin-left: 95vh; color:black;background-color:#ee9f27;
+                border-radius:2px;
+                width: 15px;
+                height: 10px; 
+            
+                ">x</span>
+               -->
+               <span class="dot"></span>
+
+
+            </div>
+            <div class="flex-container-folder">
+                <div class ="side-menu" style="width:18vw;">
+                    <div class="menu-item">
+                        <span class="menu-icon">AA</span>
+                        <span>Text</span>
+                    </div>
+                    <div class="menu-i<tem">
+                        <span class="menu-icon">AA</span>
+                        <span>Text</span>
+                    </div>
+                    <div class="menu-i<tem">
+                        <span class="menu-icon">AA</span>
+                        <span>Text</span>
+                    </div>
+
+                </div>
+                <div class ="files-panel">
+                    <a href="https://bit.ly/3kO3B1C">
+                        <div class = "file">
+                            <img class="icon" src="Pdf_icon_file.png">
+                            <span class="icon-label">Resume</span>
+                        </div>
+    
+                    </a>
+
+                </div>
+              </div>  
+            </div>
+
+    </body>
+    <script>
+        $( function() {
+            $( "#dragable" ).draggable();
+    
+          } );
+    
+    </script>
+</html>
