@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  </head>
+    <style>
+      .dot-term {
+        height:     15px;
+        width: 15px;
+        background-color:#ee9f27;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        right: 4vh;
+        margin-top:2vh;
+      
+      }
+      .dot-term:hover {
+        background-color: #bd6e08;
+
+      }
+
+      .flex-container {
+        display: flex;
+      }
+      
+      .flex-container > div {
+        margin: 10px;
+        padding: 20px;
+        font-size: 20px;
+      }
+      
+      .container {
+        /**border: solid 1px #000;**/
+        width: 100px;
+        height: 100px;
+        padding: 5px;
+        text-align: center;
+        margin-top:2%
+      }
+      .folder_tab, .folder {
+        margin: 0 auto;
+        background-color: #708090;
+      }
+      .folder_tab {
+        width: 25px;
+        height: 5px;
+        margin-right: 50%;
+        border-radius: 5px 15px 0 0;
+      }
+      .folder {
+        width: 50px;
+        height: 35px;
+        border-radius: 0 5px 5px 5px;
+        box-shadow: 1px 1px 0 1px #CCCCCC;
+      }
+      .termico {
+        width: 55px;
+        height: 45px;
+     }
+
+      
+        body {
+            min-width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #eee;
+            position: relative;
+            background-image: linear-gradient(45deg, #dd4814, #77216f, #5e2750, #2c001e, #aea79f, #333333);
+          }
+          
+          .console {
+            position: relative;
+            font-family: 'monospace';
+            width: 700px;
+            height: 450px;
+            box-sizing: border-box;
+            margin: auto;
+
+                    
+          }
+          
+          .console header {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            background-color: #555;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            color: #DDD;
+          }
+          
+          .console .consolebody {
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            box-sizing: border-box;
+            padding: 20px;
+            height: calc(100% - 40px);
+            overflow: scroll;
+            background-color: #000;
+            color: #63de00;
+            opacity:0.7;
+
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+
+          }
+          
+          .console .consolebody p {
+            line-height: 1.5rem;
+          }
+          .dot {
+            height:     15px;
+            width: 15px;
+            background-color:#ee9f27;
+            border-radius: 50%;
+            display: inline-block;
+            text-align: center;
+            position: realtive;
+            right: 4vh;
+            margin-left:18vw;
+            vertical-align: middle;
+
+          }
+          .dot:hover{
+              background-color: #bd6e08;
+          }
+                  .background{
+            background-image: linear-gradient(45deg, #dd4814, #77216f, #5e2750, #2c001e, #aea79f, #333333);
+
+        }
+        .folderWin{
+            height:30%;
+            margin:5%;
+        }
+
+        .files-panel{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: warp;
+            width:fit-content;
+
+        }
+        .file{
+            display: inline-flex;
+            flex-direction: column;
+            width:fit-content;
+            align-items: center;
+            flex-wrap: nowarp;
+        }
+        .file:hover{
+            display: inline-flex;
+            flex-direction: column;
+            width:min-content;
+            height:19vh;
+            background-color: #ee9f27;
+            opacity:0.7;
+            flex-wrap:nowrap;
+            border: 1px solid red;
+
+
+        }
+        .icon{
+            width:10vh;
+            height:10vh;
+            margin:3vh;
+        }
+        .icon-label{
+            margin-left:2vh;
+            color:black;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .top-flex{
+            background-color: #44413D;
+            height:4vh;
+            width:60%;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+
+        }
+        .flex-container-folder {
+            display: flex;
+            flex-wrap: warp;
+            height:60vh;
+            width:60%;
+            background-color: #F2F0EF;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+
+
+          }
+          
+          .side-menu{
+            display: flex;
+            flex-direction: column;
+            background-color: #615D53;
+            width: 30%;
+            border-bottom-left-radius: 15px;
+
+          }
+          .menu-item{
+            display: flex;
+            flex-direction: row;
+            margin-left: 2vh;
+            margin-top: 2vh;
+            margin-right: 2vh;
+            border-radius: 1vh;
+        }
+        .menu-item:hover {
+          background-color: orange;
+          /* text-shadow: 0 0 black; */
+      }
+        .menu-text{
+            font-size: large;
+            color:#000;
+
+        }
+        img.menu-icon {
+          width: 20px;
+          margin-right: 2vh;
+      }
+      
+      
+
+    </style>
+
+    <body>
+      <div class="flex-container" >
+        <div>
+            <div class="container">
+              <div class="folder_tab"></div>
+              <div id="folder1" class="folder"></div>
+              <span style="color:#DDD;font-family:monospace">Document</span>
+            </div>
+        </div>
+        <div>
+            <div class="">
+              <img src="./terminal.png" id="terminal"class="termico"></div>
+              <span style="color:#DDD;font-family:monospace;">Terminal</span>
+            </div>
+        </div>
+        
+      </div>
+      
+        <div  id = "draggable" class="console">
+            <header>
+              <p>pratyush@World <span class="dot-term"></span></p>
+            </header>
+            <div class="consolebody">
+              <p> Welcome to the world of Pratyush Harsh</p>
+              <p >> Click Here to download My Resume</p>
+              <p >> Enter reachme [your mail id] to hire me or have a chat</p>> help command will help you out
+            <div id = "user_inputs">
+                <p>> <input id ="0" type="text" style="
+                    background:transparent;
+                    border: none;
+                    outline: none;
+                color:#63de00;
+                font-size:16px;
+                font-family:'monospace';
+          " autocomplete=off></input></p>
+              </div>
+              
+            </div>
+
+          </div>
+          <!-- Folder Portion Begins-->
+          <div id="folderWin" class="folderWin" style="font-family:monospace">
+
+            <div class="top-flex" style="">
+                <span style="margin-left: 50vh;font-weight:bold;color:azure; margin-top:10px;">File Explorer <span class="dot"></span></span>
+               <!--
+                    <span style="margin-left: 95vh; color:black;background-color:#ee9f27;
+                border-radius:2px;
+                width: 15px;
+                height: 10px; 
+            
+                ">x</span>
+               -->
+               
+
+
+            </div>
+            <div class="flex-container-folder">
+                <div class ="side-menu" style="width:18vw;">
+                    <div class="menu-item" >
+                        <img class="menu-icon" src="./github.png" ></img>
+                        <a href="https://www.github.com/gr8geek"><span class="menu-text">GitHub</span></a>
+                    </div>
+                    <div class="menu-item" >
+                      <img class="menu-icon" src="./linkedin.png" ></img>
+                      <a href="https://www.linked.com/in/gr8geek"><span class="menu-text">LinkedIn</span></a>
+                  </div>
+
+
+                </div>
+                <div class ="files-panel">
+                    <a href="https://bit.ly/3kO3B1C">
+                        <div class = "file">
+                            <img class="icon" src="Pdf_icon_file.png">
+                            <span class="icon-label">Resume</span>
+                        </div>
+                    </a>
+
+                </div>
+              </div>  
+            </div>
+
+
+        
+    </body>
+    <script>
+      $("#folderWin").click(function(){
+        var zindcon = document.getElementById("draggable").style.zIndex 
+        document.getElementById("folderWin").style.zIndex = (zindcon+1)
+      })
+      $("#draggable").click(function(){
+        var zindcon = document.getElementById("folderWin").style.zIndex 
+        document.getElementById("draggable").style.zIndex = (zindcon+1)
+      })
+
+      $("#folderWin").hide()
+      $(".dot").click(function(){
+        $("#folderWin").hide()
+
+      })
+      $("#folderWin").draggable()
+
+      $("#folder1").click(function(){
+        $("#folderWin").show()
+        $( "#draggable" ).hide();
+      })
+      $("#terminal").click(function(){
+        $( "#draggable" ).show();
+      })
+      $(".dot-term").click(function(){
+        $("#draggable").hide();
+      })
+      $( function() {
+        $( "#draggable" ).draggable();
+      } );
+
+        function template(ide){
+            console.log("Inside")
+            return `<p>> <input id =`+ide+` type="text" style="
+                background:transparent;
+                border: none;
+                width:
+                outline: none;
+            color:#63de00;
+            margin:;
+            font-size:16px;
+            font-family:'monospace';
+      "autocomplete=off></input></p>`
+        
+        }
+        var ele = 0
+        function passinps(event){
+            console.log(event.keyCode)
+          }
+          document.getElementById(ele.toString()).addEventListener("keyup",(event)=>{
+            //if(event.keyCode)
+          })    
+    </script>
+
+    
+</html>
